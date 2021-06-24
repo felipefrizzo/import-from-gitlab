@@ -8,4 +8,5 @@ stages:
 build:
   stage: build
   script:
+    - ls -lha
     - packer validate mongodb.pkr.hcl
