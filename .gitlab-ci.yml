@@ -13,4 +13,4 @@ build:
   script:
     - ls -lha
     - packer --version
-    - packer validate mongodb.pkr.hcl
+    - find . -name '*.pkr.hcl' -exec packer validate '{}' ';'
