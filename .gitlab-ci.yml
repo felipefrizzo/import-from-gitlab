@@ -1,6 +1,9 @@
 image:
-  name: felipefrizzo/packer:latest
-  entrypoint: [""]
+  name: hashicorp/packer:light
+  entrypoint:
+    - '/usr/bin/env'
+    - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+
 
 stages:
   - build
@@ -10,6 +13,4 @@ build:
   script:
     - ls -lha
     - packer --version
-    - packer init mongodb.pkr.hcl
-    - ls -lha
-    - /usr/bin/packer validate mongodb.pkr.hcl
+    - packer validate mongodb.pkr.hcl
