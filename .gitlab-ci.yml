@@ -10,4 +10,5 @@ build:
   script:
     - ls -lha
     - packer init mongodb.pkr.hcl
+    - ls -lha
     - packer validate mongodb.pkr.hcl
