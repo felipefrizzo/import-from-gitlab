@@ -1,14 +1,10 @@
-image:
-  name: felipefrizzo/packer:latest
-  entrypoint: [""]
-
 stages:
   - build
 
 build:
   stage: build
+  parallel:
+    matrix:
+      - APP_TYPE: [ios, android]
   script:
-    - echo ${FILE}
-    - cat ${FILE}
-    - ls -lha
-    - packer --version
+    - echo ${APP_TYPE}
