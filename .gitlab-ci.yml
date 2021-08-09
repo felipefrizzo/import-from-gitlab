@@ -6,5 +6,7 @@ build:
   parallel:
     matrix:
       - APP_TYPE: [ios, android]
+      - USER_TYPE: [borrower, investor]
   script:
     - echo ${APP_TYPE}
+    - echo ${USER_TYPE}
