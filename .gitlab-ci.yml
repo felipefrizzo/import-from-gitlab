@@ -1,12 +1,26 @@
+image: alpine:latest
+
 stages:
   - build
 
 build:
   stage: build
-  parallel:
-    matrix:
-      - APP_TYPE: [ios, android]
-        USER_TYPE: [borrower, investor]
   script:
-    - echo ${APP_TYPE}
-    - echo ${USER_TYPE}
+    - echo "Compiling the code..."
+    - echo "Compile complete."
+    - mkdir -p errors
+    - mkdir -p errors/application
+    - mkdir -p errors/application/cicd
+    - mkdir -p errors/application/cicd/gitlab
+    - mkdir -p infra-registry
+    - mkdir -p infra-registry/.artifacts/
+    - echo "errors" > infra-registry/.artifacts/errors.txt
+    - echo "drifts" > infra-registry/.artifacts/drifts.txt
+    - echo "errors file" > errors/application/cicd/gitlab/errors.txt
+  artifacts:
+    paths:
+      - errors/
+      - drifts/
+      - infra-registry/.artifacts/
+    expire_in: 1 week
+    when: always
