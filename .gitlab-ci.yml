@@ -14,6 +14,7 @@ build:
     - mkdir -p errors/application/cicd/gitlab
     - mkdir -p infra-registry
     - mkdir -p infra-registry/.artifacts/
+    - cp index.html errors/application/cicd/gitlab/index.html
     - echo "errors" > infra-registry/.artifacts/errors.txt
     - echo "drifts" > infra-registry/.artifacts/drifts.txt
     - echo "errors file" > errors/application/cicd/gitlab/errors.txt
