@@ -1,15 +1,15 @@
-image: docker:18.03.1-ce
+image: docker:stable
 stages:
   - build
 
 variables:
-  DOCKER_HOST: tcp://docker:2376/
+  DOCKER_HOST: tcp://docker:2375/
   DOCKER_DRIVER: overlay2
 
 build:
   stage: build
   tags: [ gitlab-org-docker ]
   services:
-    - docker:18.09.8-dind
+    - docker:dind
   script:
     - docker info
