@@ -2,14 +2,12 @@ image: docker:stable
 stages:
   - build
 
-variables:
-  DOCKER_HOST: tcp://docker:2375/
-  DOCKER_DRIVER: overlay2
-
 build:
   stage: build
-  tags: [ gitlab-org-docker ]
-  services:
-    - docker:dind
+  parallel:
+    matrix:
+      - ARCH: ["amd64", "arm64"]
+        ARCH_ALT: ["x86_64", "arm64"]
   script:
-    - env
+    - echo ${ARCH}
+    - echo ${ARCH_ALT}
