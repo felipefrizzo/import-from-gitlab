@@ -8,10 +8,10 @@ build:
     matrix:
       - ARCH: ["amd64"]
         ARCH_ALT: ["x86_64"]
-        SERVER: ["dind"]
+        TAGS: ["dind"]
       - ARCH: ["arm64"]
         ARCH_ALT: ["arm64"]
-        SERVER: ["graviton-dind"]
+        TAGS: ["graviton-dind"]
   script:
     - echo ${ARCH}
     - echo ${ARCH_ALT}
