@@ -12,4 +12,4 @@ build:
   services:
     - docker:dind
   script:
-    - docker info
+    - env
