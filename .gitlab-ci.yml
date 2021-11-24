@@ -6,8 +6,14 @@ build:
   stage: build
   parallel:
     matrix:
-      - ARCH: ["amd64", "arm64"]
-        ARCH_ALT: ["x86_64", "arm64"]
+      - ARCH: ["amd64"]
+        ARCH_ALT: ["x86_64"]
+        SERVER: ["dind"]
+      - ARCH: ["arm64"]
+        ARCH_ALT: ["arm64"]
+        SERVER: ["graviton-dind"]
   script:
     - echo ${ARCH}
     - echo ${ARCH_ALT}
+  tags:
+    - ${TAGS}
