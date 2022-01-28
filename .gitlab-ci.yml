@@ -1,11 +1,8 @@
-image: docker:stable
 stages:
-  - build
+    - build
 
 build:
-  stage: build
-  parallel:
-    matrix:
-      - ARCH: [arm64, x86_64]
-  script:
-    - echo ${ARCH}
+    stage: build
+    script:
+        - echo "Final coverage 62.7%"
+    coverage: /^Final coverage\s+(\d+.\d+\%)/
