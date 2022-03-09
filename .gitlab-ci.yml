@@ -7,5 +7,7 @@ build:
   services:
     - name: hashicorp/terraform:1.0.0
       alias: terraform
+      entrypoint:
+        - ""
   script:
     - terraform --version
