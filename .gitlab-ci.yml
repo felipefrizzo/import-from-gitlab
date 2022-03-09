@@ -4,8 +4,8 @@ stages:
 
 build:
   stage: build
-  parallel:
-    matrix:
-      - ARCH: [arm64, x86_64]
+  services:
+    - name: hashicorp/terraform:1.0.0
+      alias: terraform
   script:
-    - echo ${ARCH}
+    - terraform --version
