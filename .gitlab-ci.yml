@@ -1,12 +1,20 @@
-image: docker:stable
+image:     
+    name: amazon/aws-cli
+    entrypoint: [""]
+
 stages:
-  - build
+    - build
 
 build:
-  stage: build
-  services:
-    - name: hashicorp/terraform:1.0.0
-      alias: terraform
-      entrypoint: [""]
-  script:
-    - terraform --version
+    stage: build
+    variables:
+        SERVICES: s3:4572
+        HOSTNAME_EXTERNAL: localstack 
+        DEFAULT_REGION: eu-west-1
+        AWS_ACCESS_KEY_ID: localkey
+        AWS_SECRET_ACCESS_KEY: localsecret
+    services:
+        - name: localstack/localstack
+          alias: localstack
+    script:
+        - curl localstack:4566
