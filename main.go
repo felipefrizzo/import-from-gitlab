@@ -13,7 +13,7 @@ import (
 func main() {
 	curl()
 
-	config := aws.NewConfig().WithRegion("us-east-1").WithEndpoint("http://localstack:4566").WithS3ForcePathStyle(true)
+	config := aws.NewConfig().WithRegion("us-east-1").WithEndpoint("http://localstack:4566").WithS3ForcePathStyle(true).WithDisableSSL(true)
 	session, err := session.NewSession(config)
 	if err != nil {
 		panic(err)
