@@ -20,6 +20,16 @@ func main() {
 	}
 
 	client := s3.New(session)
+	bucket, err := client.CreateBucket(&s3.CreateBucketInput{
+		Bucket: aws.String("pipeline"),
+	})
+
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Bucket created")
+		fmt.Println(*bucket.Location)
+	}
 
 	buckets, err := client.ListBuckets(&s3.ListBucketsInput{})
 	if err != nil {
