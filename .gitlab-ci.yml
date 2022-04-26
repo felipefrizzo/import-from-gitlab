@@ -1,6 +1,4 @@
-image:     
-    name: amazon/aws-cli
-    entrypoint: [""]
+image: golang:1.17
 
 stages:
     - build
@@ -8,7 +6,7 @@ stages:
 build:
     stage: build
     variables:
-        SERVICES: s3:4572
+        SERVICES: s3
         HOSTNAME_EXTERNAL: localstack 
         DEFAULT_REGION: eu-west-1
         AWS_ACCESS_KEY_ID: localkey
@@ -17,4 +15,5 @@ build:
         - name: localstack/localstack
           alias: localstack
     script:
-        - curl localstack:4566
+        - go mod download
+        - go run main.go
